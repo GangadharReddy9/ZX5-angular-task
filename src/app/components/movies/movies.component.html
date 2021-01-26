@@ -1,0 +1,22 @@
+<div class="header">
+  <h3>Z5X Movies</h3>
+
+  <button mat-icon-button (click)="openDialog()">
+    <mat-icon>filter_list</mat-icon>
+  </button>
+</div>
+
+<div class="main-content">
+  <mat-list>
+    <mat-list-item *ngFor="let movie of movies">
+      <label class="title" mat-line>{{ movie.Title }}</label>
+      <label class="director" mat-line>{{ movie.Director }}</label>
+      <label class="date" mat-line>{{ movie.Release_Date }}</label>
+      <label class="genre" mat-line>{{ movie.Major_Genre }}</label>
+    </mat-list-item>
+  </mat-list>
+</div>
+
+<div *ngIf="noRecordsFound" class="empty-list">
+  <p>Oops...! No movies found</p>
+</div>

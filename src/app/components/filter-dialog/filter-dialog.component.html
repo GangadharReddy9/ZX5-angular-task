@@ -1,0 +1,28 @@
+<form [formGroup]="form">
+  <h1 mat-dialog-title>Movies filter</h1>
+
+  <div mat-dialog-content>
+    <p>Choose below fields to apply filter on movies</p>
+
+    <mat-form-field>
+      <mat-label>Search label</mat-label>
+      <input matInput [formControl]="searchTextControl" name="search">
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Filter type</mat-label>
+      <mat-select [formControl]="filterTypeControl" name="type">
+        <mat-option *ngFor="let item of filterItems" [value]="item.value">
+          {{item.viewValue}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+
+  <div mat-dialog-actions>
+    <button mat-button (click)="onNoClick()">Cancel</button>
+    <button mat-button (click)="onReset()">Reset</button>
+    <button mat-button (click)="onSubmit()">Apply</button>
+  </div>
+
+</form>
