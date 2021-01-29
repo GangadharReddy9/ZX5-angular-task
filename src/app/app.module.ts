@@ -15,12 +15,14 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatSelectModule} from '@angular/material/select';
 import {MatInputModule} from '@angular/material/input';
 import {MatDialogModule} from '@angular/material/dialog';
+import { AddUpdateMovieComponent } from './components/add-update-movie/add-update-movie.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     MoviesComponent,
-    FilterDialogComponent
+    FilterDialogComponent,
+    AddUpdateMovieComponent
   ],
   imports: [
     BrowserModule,

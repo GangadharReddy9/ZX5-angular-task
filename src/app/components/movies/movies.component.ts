@@ -12,20 +12,41 @@ import {DialogData, FilterDialogComponent} from '../filter-dialog/filter-dialog.
 export class MoviesComponent implements OnInit {
   movies: Movie[] = [];
   filterData: DialogData = {};
+  showMovieList = true;
   noRecordsFound = false;
+  selectedMovie?: Movie;
 
   constructor(private apiCalls: ApiCallsService, private dialog: MatDialog) {
   }
 
   ngOnInit(): void {
-    this.fetchMovies();
+    this.apiCalls.moviesLoaded$.subscribe(success => {
+      if (success) {
+        this.fetchMovies();
+      }
+    });
+  }
+
+  onAddMovie(): void {
+    this.selectedMovie = undefined;
+    this.showMovieList = false;
+  }
+
+  onEditMovie(movie: Movie): void {
+    this.selectedMovie = movie;
+    this.showMovieList = false;
+  }
+
+  updateMoviesList(status: boolean): void {
+    if (status) {
+      this.fetchMovies();
+      this.showMovieList = true;
+    }
   }
 
   private fetchMovies(value?: string, filterType?: MovieFilter): void {
-    this.apiCalls.getMovies(value, filterType).subscribe(movies => {
-      this.movies = movies;
-      this.noRecordsFound = this.movies.length <= 0;
-    });
+    this.movies = this.apiCalls.getMovies(value, filterType);
+    this.noRecordsFound = this.movies.length <= 0;
   }
 
   openDialog(): void {

@@ -1,0 +1,23 @@
+.movie-form {
+  display: flex;
+  flex-direction: column;
+  margin: 90px 1rem 1rem 1rem;
+
+  ::ng-deep {
+    .mat-form-field-appearance-legacy .mat-form-field-underline {
+      background-color: chocolate;
+    }
+
+    .mat-form-field-appearance-legacy .mat-form-field-label {
+      color: darkgrey;
+    }
+
+    .mat-input-element:disabled, .mat-form-field-type-mat-native-select.mat-form-field-disabled .mat-form-field-infix::after {
+      color: black;
+    }
+  }
+
+  .button {
+    margin: 1rem 0 ;
+  }
+}

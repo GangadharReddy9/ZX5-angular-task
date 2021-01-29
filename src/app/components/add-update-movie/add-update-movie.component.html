@@ -1,0 +1,59 @@
+<form class="movie-form" [formGroup]="movieForm" (ngSubmit)="addOrUpdateMovie()">
+
+  <mat-form-field color="primary">
+    <mat-label>Movie title</mat-label>
+    <input matInput [formControl]="titleControl" required name="title">
+    <mat-error *ngIf="titleControl.hasError('required')">
+      Title is <strong>required</strong>
+    </mat-error>
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>US Gross</mat-label>
+    <input matInput [formControl]="usGrossControl" name="usGross">
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>Worldwide Gross</mat-label>
+    <input matInput [formControl]="worldwideGrossControl" name="worldwideGross">
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>Production budget</mat-label>
+    <input matInput [formControl]="productionBudgetControl" name="productionBudget">
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>Distributor</mat-label>
+    <input matInput [formControl]="distributorControl" name="distributor">
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>Source</mat-label>
+    <input matInput [formControl]="sourceControl" name="source">
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>Major Genre</mat-label>
+    <input matInput [formControl]="majorGenreControl" name="majorGenre">
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>Creative Type</mat-label>
+    <input matInput [formControl]="creativeTypeControl" name="creativeType">
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>Director</mat-label>
+    <input matInput [formControl]="directorControl" name="director">
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>IMDB Rating</mat-label>
+    <input matInput [formControl]="imdbRatingControl" name="imdbRation">
+  </mat-form-field>
+
+  <button class="button" mat-raised-button type="submit">{{ buttonText }}</button>
+  <button class="button" *ngIf="isMovieEditEnabled" mat-raised-button type="button" (click)="deleteMovie()">Delete</button>
+  <button class="button" mat-raised-button type="button" (click)="moviesUpdated.emit(true)">Cancel</button>
+</form>
